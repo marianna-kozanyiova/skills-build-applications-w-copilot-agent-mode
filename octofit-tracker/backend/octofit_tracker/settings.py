@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
+
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -53,6 +55,14 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# ALLOWED_HOSTS config for Codespace and localhost
+codespace_name = os.environ.get('CODESPACE_NAME')
+codespace_host = f"{codespace_name}-8000.app.github.dev" if codespace_name else None
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+if codespace_host:
+    ALLOWED_HOSTS.append(codespace_host)
+ALLOWED_HOSTS.append('*')  # fallback for dev
 
 ROOT_URLCONF = 'octofit_tracker.urls'
 
