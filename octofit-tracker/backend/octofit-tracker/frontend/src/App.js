@@ -1,6 +1,6 @@
 import './App.css';
 import { NavLink, Routes, Route } from 'react-router-dom';
-import logo from '../public/octofitapp-small.png';
+import logo from './octofitapp-small.png';
 import Activities from './components/Activities';
 import Leaderboard from './components/Leaderboard';
 import Teams from './components/Teams';
